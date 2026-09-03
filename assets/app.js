@@ -29,7 +29,7 @@ function renderStudy(showAnswers=true,step=null){setupSvg(els.studyMap);els.stud
   els.studyCue.textContent=showAnswers?mod().tips:'地名和顏色已消失。先看著真實輪廓，在腦中把名稱補回去，再進下一關。';els.timerBadge.textContent=showAnswers?'先觀察':'答案已隱藏';
 }
 function nearestTarget(item,pt){return item.targets.map(t=>({t,d:Math.hypot(pt[0]-t[0],pt[1]-t[1])})).sort((a,b)=>a.d-b.d)[0]}
-function direction(pt,t){const dx=pt[0]-t[0],dy=pt[1]-t[1],ns=Math.abs(dy)<18?'':(dy<0?'北':'南'),ew=Math.abs(dx)<18?'':(dx>0?'東':'西');return ns+ew||'非常接近'}
+function direction(pt,t){const dx=pt[0]-t[0],dy=pt[1]-t[1],ns=Math.abs(dy)<18?'':(dy<0?'北':'南'),ew=Math.abs(dx)<18?'':(dx>0?'東':'西');return ew+ns||'非常接近'}
 function allRecallIds(){return mod().sets.all.ids}
 function shuffle(ids){const result=[...ids];for(let i=result.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[result[i],result[j]]=[result[j],result[i]]}return result}
 function setRecallFeedback(message,state=''){els.recallFeedback.className='callout'+(state?' feedback-'+state:'');els.recallFeedback.innerHTML=message}
