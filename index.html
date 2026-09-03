@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content="以觀察、定位回想與白紙重建，學習世界大框架、臺灣周邊國家海域，以及臺灣島與周邊島嶼。" />
+<meta name="theme-color" content="#f5f3ee" />
+<title>地理骨架訓練器｜三模組學習版</title>
+<link rel="stylesheet" href="./assets/styles.css" />
+</head>
+<body>
+<main class="shell">
+  <header class="hero">
+    <div><p class="eyebrow">Three-map learning prototype</p><h1>地理骨架訓練器</h1><p class="lede">依序從世界大框架，縮小到臺灣周邊國家與海域，最後聚焦臺灣島及周邊島嶼。三張圖共用「觀察 → 定位 → 白紙重建」流程。</p></div>
+    <div class="preview-badge">三模組互動學習版</div>
+  </header>
+
+  <nav class="module-tabs" aria-label="三張練習圖">
+    <button class="module-tab active" data-module="world" type="button"><strong>第一張｜世界大框架</strong><span>五大洲＋三大洋</span></button>
+    <button class="module-tab" data-module="region" type="button"><strong>第二張｜臺灣周邊定位</strong><span>陸地骨架＋四個海域</span></button>
+    <button class="module-tab" data-module="islands" type="button"><strong>第三張｜臺灣島與周邊島嶼</strong><span>指定的 10 個位置</span></button>
+  </nav>
+
+  <section class="module-head">
+    <div class="card module-summary"><p class="kicker" id="moduleKicker">第一張練習圖</p><h2 id="moduleTitle"></h2><p id="moduleTips"></p></div>
+    <div class="card required" id="requiredBox"></div>
+  </section>
+
+  <nav class="stage-tabs" aria-label="學習階段">
+    <button class="stage-tab active" data-stage="study" type="button">1. 觀察骨架</button>
+    <button class="stage-tab" data-stage="recall" type="button">2. 定位回想</button>
+    <button class="stage-tab" data-stage="boss" type="button">3. 白紙重建</button>
+  </nav>
+
+  <section id="studyPanel" class="stage-panel">
+    <div class="panel-heading"><div><p class="kicker">Stage 1</p><h3>先看結構，不背字串</h3><p>點下方骨架提示，可以看到位置關係；準備好後，讓完整地圖只出現幾秒。</p></div><div class="button-row"><button id="studyStart" class="button primary" type="button">看 10 秒</button><button id="studyReset" class="button secondary" type="button">重新看</button></div></div>
+    <div id="guideStrip" class="guide-strip"></div>
+    <div class="map-frame"><svg id="studyMap" tabindex="0" role="img"></svg><div id="timerBadge" class="timer">先觀察</div></div>
+    <div id="studyCue" class="callout"></div>
+    <div class="button-row"><button id="toRecall" class="button primary" type="button">進入定位回想</button></div>
+  </section>
+
+  <section id="recallPanel" class="stage-panel hidden">
+    <div class="control-bar"><div><p class="kicker">Stage 2</p><h3>名稱消失，自己補回去</h3></div><label class="field"><span>練習順序</span><select id="practiceSet"></select></label></div>
+    <div id="recallTokens" class="tokens"></div>
+    <div class="map-frame"><svg id="recallMap" class="clickable" tabindex="0" role="img"></svg></div>
+    <div id="recallFeedback" class="callout">選一個名稱，再點你認為的位置。先完成再顯影，不立即公布答案。</div>
+    <div class="button-row"><button id="revealRecall" class="button primary" type="button">顯影位置差異</button><button id="resetRecall" class="button secondary" type="button">重新放置</button><button id="toBoss" class="button secondary" type="button">進入白紙重建</button></div>
+  </section>
+
+  <section id="bossPanel" class="stage-panel hidden">
+    <div class="panel-heading"><div><p class="kicker">Stage 3</p><h3>把外部地圖拿掉</h3><p>點位置或直接畫線，完成後再把真實地圖半透明疊回來。</p></div></div>
+    <div class="mode-row"><span>作答：</span><button id="pointMode" class="mode-btn active" type="button">點位置</button><button id="drawMode" class="mode-btn" type="button">自由畫線</button><button id="guideToggle" class="mode-btn" type="button"></button></div>
+    <div id="bossTokens" class="tokens"></div>
+    <div class="map-frame"><svg id="bossMap" tabindex="0" role="img"></svg></div>
+    <div id="bossFeedback" class="callout">第一遍可使用一條輔助線或一個起點；第二遍切換成完全空白。</div>
+    <div class="button-row"><button id="revealBoss" class="button primary" type="button">顯影真實地圖</button><button id="hideBoss" class="button secondary" type="button">藏回答案</button><button id="clearBoss" class="button secondary" type="button">換一張白紙</button></div>
+  </section>
+
+  <footer>地圖輪廓取自 Natural Earth 世界資料；海域光圈與放大的小島符號只用作空間記憶及操作，不代表精確邊界或實際比例。</footer>
+</main>
+<script src="./assets/app.js"></script>
+</body>
+</html>
