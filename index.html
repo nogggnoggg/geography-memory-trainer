@@ -40,11 +40,11 @@
   </section>
 
   <section id="recallPanel" class="stage-panel hidden">
-    <div class="control-bar"><div><p class="kicker">Stage 2</p><h3>名稱消失，自己補回去</h3></div><label class="field"><span>練習順序</span><select id="practiceSet"></select></label></div>
-    <div id="recallTokens" class="tokens"></div>
+    <div class="panel-heading"><div><p class="kicker">Stage 2</p><h3>看題目，點出位置</h3><p>系統會隨機出題，每個地點在一輪中只會出現一次。</p></div><div id="recallProgress" class="quiz-progress"></div></div>
+    <div class="quiz-question" aria-live="polite"><span>請在地圖上找出</span><strong id="recallTarget"></strong></div>
     <div class="map-frame"><svg id="recallMap" class="clickable" tabindex="0" role="img"></svg></div>
-    <div id="recallFeedback" class="callout">選一個名稱，再點你認為的位置。先完成再顯影，不立即公布答案。</div>
-    <div class="button-row"><button id="revealRecall" class="button primary" type="button">顯影位置差異</button><button id="resetRecall" class="button secondary" type="button">重新放置</button></div>
+    <div id="recallFeedback" class="callout" aria-live="polite">在地圖上點出題目指定的位置。</div>
+    <div class="button-row"><button id="nextRecall" class="button primary" type="button" disabled>下一題</button><button id="resetRecall" class="button secondary" type="button">重新洗牌</button></div>
   </section>
 
   <footer>地圖輪廓取自 Natural Earth 世界資料；海域光圈與放大的小島符號只用作空間記憶及操作，不代表精確邊界或實際比例。</footer>
